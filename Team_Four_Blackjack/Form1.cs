@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Team_Four_Blackjack
 {
-    public partial class Form1 : Form
+    public partial class frmBJ : Form
     {
-        public Form1()
+        public frmBJ()
         {
             InitializeComponent();
         }
