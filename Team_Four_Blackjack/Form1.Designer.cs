@@ -1,6 +1,6 @@
 ﻿namespace Team_Four_Blackjack
 {
-    partial class Form1
+    partial class frmBJ
     {
         /// <summary>
         /// Required designer variable.
@@ -28,13 +28,307 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBJ));
+            this.picTable = new System.Windows.Forms.PictureBox();
+            this.picDealer = new System.Windows.Forms.PictureBox();
+            this.btnHit = new System.Windows.Forms.Button();
+            this.btnStand = new System.Windows.Forms.Button();
+            this.picPlayerCard1 = new System.Windows.Forms.PictureBox();
+            this.picPlayerCard3 = new System.Windows.Forms.PictureBox();
+            this.picPlayerCard2 = new System.Windows.Forms.PictureBox();
+            this.picPlayerCard4 = new System.Windows.Forms.PictureBox();
+            this.picPlayerCard5 = new System.Windows.Forms.PictureBox();
+            this.picPlayerCard6 = new System.Windows.Forms.PictureBox();
+            this.picPlayerCard7 = new System.Windows.Forms.PictureBox();
+            this.picPlayerCard8 = new System.Windows.Forms.PictureBox();
+            this.picPlayerCard9 = new System.Windows.Forms.PictureBox();
+            this.picDealerCard9 = new System.Windows.Forms.PictureBox();
+            this.picDealerCard8 = new System.Windows.Forms.PictureBox();
+            this.picDealerCard7 = new System.Windows.Forms.PictureBox();
+            this.picDealerCard6 = new System.Windows.Forms.PictureBox();
+            this.picDealerCard5 = new System.Windows.Forms.PictureBox();
+            this.picDealerCard4 = new System.Windows.Forms.PictureBox();
+            this.picDealerCard3 = new System.Windows.Forms.PictureBox();
+            this.picDealerCard2 = new System.Windows.Forms.PictureBox();
+            this.picDealerCard1 = new System.Windows.Forms.PictureBox();
+            this.lblDealerTotal = new System.Windows.Forms.Label();
+            this.lblPlayerWL = new System.Windows.Forms.Label();
+            this.lblPlayerTotal = new System.Windows.Forms.Label();
+            this.lblDealerWL = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.picTable)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picDealer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPlayerCard1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPlayerCard3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPlayerCard2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPlayerCard4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPlayerCard5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPlayerCard6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPlayerCard7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPlayerCard8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPlayerCard9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picDealerCard9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picDealerCard8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picDealerCard7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picDealerCard6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picDealerCard5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picDealerCard4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picDealerCard3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picDealerCard2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picDealerCard1)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // picTable
+            // 
+            resources.ApplyResources(this.picTable, "picTable");
+            this.picTable.Name = "picTable";
+            this.picTable.TabStop = false;
+            // 
+            // picDealer
+            // 
+            resources.ApplyResources(this.picDealer, "picDealer");
+            this.picDealer.Name = "picDealer";
+            this.picDealer.TabStop = false;
+            // 
+            // btnHit
+            // 
+            this.btnHit.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            resources.ApplyResources(this.btnHit, "btnHit");
+            this.btnHit.ForeColor = System.Drawing.SystemColors.Control;
+            this.btnHit.Name = "btnHit";
+            this.btnHit.UseVisualStyleBackColor = false;
+            // 
+            // btnStand
+            // 
+            this.btnStand.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            resources.ApplyResources(this.btnStand, "btnStand");
+            this.btnStand.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnStand.Name = "btnStand";
+            this.btnStand.UseVisualStyleBackColor = false;
+            // 
+            // picPlayerCard1
+            // 
+            resources.ApplyResources(this.picPlayerCard1, "picPlayerCard1");
+            this.picPlayerCard1.Name = "picPlayerCard1";
+            this.picPlayerCard1.TabStop = false;
+            // 
+            // picPlayerCard3
+            // 
+            resources.ApplyResources(this.picPlayerCard3, "picPlayerCard3");
+            this.picPlayerCard3.Name = "picPlayerCard3";
+            this.picPlayerCard3.TabStop = false;
+            // 
+            // picPlayerCard2
+            // 
+            resources.ApplyResources(this.picPlayerCard2, "picPlayerCard2");
+            this.picPlayerCard2.Name = "picPlayerCard2";
+            this.picPlayerCard2.TabStop = false;
+            // 
+            // picPlayerCard4
+            // 
+            resources.ApplyResources(this.picPlayerCard4, "picPlayerCard4");
+            this.picPlayerCard4.Name = "picPlayerCard4";
+            this.picPlayerCard4.TabStop = false;
+            // 
+            // picPlayerCard5
+            // 
+            resources.ApplyResources(this.picPlayerCard5, "picPlayerCard5");
+            this.picPlayerCard5.Name = "picPlayerCard5";
+            this.picPlayerCard5.TabStop = false;
+            // 
+            // picPlayerCard6
+            // 
+            resources.ApplyResources(this.picPlayerCard6, "picPlayerCard6");
+            this.picPlayerCard6.Name = "picPlayerCard6";
+            this.picPlayerCard6.TabStop = false;
+            // 
+            // picPlayerCard7
+            // 
+            resources.ApplyResources(this.picPlayerCard7, "picPlayerCard7");
+            this.picPlayerCard7.Name = "picPlayerCard7";
+            this.picPlayerCard7.TabStop = false;
+            // 
+            // picPlayerCard8
+            // 
+            resources.ApplyResources(this.picPlayerCard8, "picPlayerCard8");
+            this.picPlayerCard8.Name = "picPlayerCard8";
+            this.picPlayerCard8.TabStop = false;
+            // 
+            // picPlayerCard9
+            // 
+            resources.ApplyResources(this.picPlayerCard9, "picPlayerCard9");
+            this.picPlayerCard9.Name = "picPlayerCard9";
+            this.picPlayerCard9.TabStop = false;
+            // 
+            // picDealerCard9
+            // 
+            resources.ApplyResources(this.picDealerCard9, "picDealerCard9");
+            this.picDealerCard9.Name = "picDealerCard9";
+            this.picDealerCard9.TabStop = false;
+            // 
+            // picDealerCard8
+            // 
+            resources.ApplyResources(this.picDealerCard8, "picDealerCard8");
+            this.picDealerCard8.Name = "picDealerCard8";
+            this.picDealerCard8.TabStop = false;
+            // 
+            // picDealerCard7
+            // 
+            resources.ApplyResources(this.picDealerCard7, "picDealerCard7");
+            this.picDealerCard7.Name = "picDealerCard7";
+            this.picDealerCard7.TabStop = false;
+            // 
+            // picDealerCard6
+            // 
+            resources.ApplyResources(this.picDealerCard6, "picDealerCard6");
+            this.picDealerCard6.Name = "picDealerCard6";
+            this.picDealerCard6.TabStop = false;
+            // 
+            // picDealerCard5
+            // 
+            resources.ApplyResources(this.picDealerCard5, "picDealerCard5");
+            this.picDealerCard5.Name = "picDealerCard5";
+            this.picDealerCard5.TabStop = false;
+            // 
+            // picDealerCard4
+            // 
+            resources.ApplyResources(this.picDealerCard4, "picDealerCard4");
+            this.picDealerCard4.Name = "picDealerCard4";
+            this.picDealerCard4.TabStop = false;
+            // 
+            // picDealerCard3
+            // 
+            resources.ApplyResources(this.picDealerCard3, "picDealerCard3");
+            this.picDealerCard3.Name = "picDealerCard3";
+            this.picDealerCard3.TabStop = false;
+            // 
+            // picDealerCard2
+            // 
+            resources.ApplyResources(this.picDealerCard2, "picDealerCard2");
+            this.picDealerCard2.Name = "picDealerCard2";
+            this.picDealerCard2.TabStop = false;
+            // 
+            // picDealerCard1
+            // 
+            resources.ApplyResources(this.picDealerCard1, "picDealerCard1");
+            this.picDealerCard1.Name = "picDealerCard1";
+            this.picDealerCard1.TabStop = false;
+            // 
+            // lblDealerTotal
+            // 
+            resources.ApplyResources(this.lblDealerTotal, "lblDealerTotal");
+            this.lblDealerTotal.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblDealerTotal.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblDealerTotal.Name = "lblDealerTotal";
+            // 
+            // lblPlayerWL
+            // 
+            resources.ApplyResources(this.lblPlayerWL, "lblPlayerWL");
+            this.lblPlayerWL.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblPlayerWL.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblPlayerWL.Name = "lblPlayerWL";
+            // 
+            // lblPlayerTotal
+            // 
+            resources.ApplyResources(this.lblPlayerTotal, "lblPlayerTotal");
+            this.lblPlayerTotal.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblPlayerTotal.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblPlayerTotal.Name = "lblPlayerTotal";
+            // 
+            // lblDealerWL
+            // 
+            resources.ApplyResources(this.lblDealerWL, "lblDealerWL");
+            this.lblDealerWL.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblDealerWL.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblDealerWL.Name = "lblDealerWL";
+            // 
+            // frmBJ
+            // 
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.Controls.Add(this.lblDealerWL);
+            this.Controls.Add(this.lblPlayerTotal);
+            this.Controls.Add(this.lblPlayerWL);
+            this.Controls.Add(this.lblDealerTotal);
+            this.Controls.Add(this.picDealerCard9);
+            this.Controls.Add(this.picDealerCard8);
+            this.Controls.Add(this.picDealerCard7);
+            this.Controls.Add(this.picDealerCard6);
+            this.Controls.Add(this.picDealerCard5);
+            this.Controls.Add(this.picDealerCard4);
+            this.Controls.Add(this.picDealerCard3);
+            this.Controls.Add(this.picDealerCard2);
+            this.Controls.Add(this.picDealerCard1);
+            this.Controls.Add(this.picPlayerCard9);
+            this.Controls.Add(this.picPlayerCard8);
+            this.Controls.Add(this.picPlayerCard7);
+            this.Controls.Add(this.picPlayerCard6);
+            this.Controls.Add(this.picPlayerCard5);
+            this.Controls.Add(this.picPlayerCard4);
+            this.Controls.Add(this.picPlayerCard3);
+            this.Controls.Add(this.picPlayerCard2);
+            this.Controls.Add(this.picPlayerCard1);
+            this.Controls.Add(this.btnStand);
+            this.Controls.Add(this.btnHit);
+            this.Controls.Add(this.picDealer);
+            this.Controls.Add(this.picTable);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "frmBJ";
+            this.ShowIcon = false;
+            ((System.ComponentModel.ISupportInitialize)(this.picTable)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picDealer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPlayerCard1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPlayerCard3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPlayerCard2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPlayerCard4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPlayerCard5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPlayerCard6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPlayerCard7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPlayerCard8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPlayerCard9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picDealerCard9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picDealerCard8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picDealerCard7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picDealerCard6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picDealerCard5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picDealerCard4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picDealerCard3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picDealerCard2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picDealerCard1)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
+
+        private System.Windows.Forms.PictureBox picTable;
+        private System.Windows.Forms.PictureBox picDealer;
+        private System.Windows.Forms.Button btnHit;
+        private System.Windows.Forms.Button btnStand;
+        private System.Windows.Forms.PictureBox picPlayerCard1;
+        private System.Windows.Forms.PictureBox picPlayerCard3;
+        private System.Windows.Forms.PictureBox picPlayerCard2;
+        private System.Windows.Forms.PictureBox picPlayerCard4;
+        private System.Windows.Forms.PictureBox picPlayerCard5;
+        private System.Windows.Forms.PictureBox picPlayerCard6;
+        private System.Windows.Forms.PictureBox picPlayerCard7;
+        private System.Windows.Forms.PictureBox picPlayerCard8;
+        private System.Windows.Forms.PictureBox picPlayerCard9;
+        private System.Windows.Forms.PictureBox picDealerCard9;
+        private System.Windows.Forms.PictureBox picDealerCard8;
+        private System.Windows.Forms.PictureBox picDealerCard7;
+        private System.Windows.Forms.PictureBox picDealerCard6;
+        private System.Windows.Forms.PictureBox picDealerCard5;
+        private System.Windows.Forms.PictureBox picDealerCard4;
+        private System.Windows.Forms.PictureBox picDealerCard3;
+        private System.Windows.Forms.PictureBox picDealerCard2;
+        private System.Windows.Forms.PictureBox picDealerCard1;
+        private System.Windows.Forms.Label lblDealerTotal;
+        private System.Windows.Forms.Label lblPlayerWL;
+        private System.Windows.Forms.Label lblPlayerTotal;
+        private System.Windows.Forms.Label lblDealerWL;
     }
 }
 
