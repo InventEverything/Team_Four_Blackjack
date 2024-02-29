@@ -1,6 +1,6 @@
 ﻿namespace Team_Four_Blackjack
 {
-    partial class frmBJ
+    partial class Form1
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBJ));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.picTable = new System.Windows.Forms.PictureBox();
             this.picDealer = new System.Windows.Forms.PictureBox();
             this.btnHit = new System.Windows.Forms.Button();
@@ -241,7 +241,7 @@
             this.lblDealerWL.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.lblDealerWL.Name = "lblDealerWL";
             // 
-            // frmBJ
+            // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -274,7 +274,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmBJ";
+            this.Name = "Form1";
             this.ShowIcon = false;
             ((System.ComponentModel.ISupportInitialize)(this.picTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDealer)).EndInit();
