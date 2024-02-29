@@ -58,6 +58,7 @@
             this.lstDeck = new System.Windows.Forms.ListBox();
             this.lstDealerHand = new System.Windows.Forms.ListBox();
             this.lstPlayerHand = new System.Windows.Forms.ListBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDealer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPlayerCard1)).BeginInit();
@@ -315,10 +316,18 @@
             resources.ApplyResources(this.lstPlayerHand, "lstPlayerHand");
             this.lstPlayerHand.Name = "lstPlayerHand";
             // 
+            // button1
+            // 
+            resources.ApplyResources(this.button1, "button1");
+            this.button1.Name = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.lstPlayerHand);
             this.Controls.Add(this.lstDealerHand);
             this.Controls.Add(this.lstDeck);
@@ -409,6 +418,7 @@
         private System.Windows.Forms.ListBox lstDeck;
         private System.Windows.Forms.ListBox lstDealerHand;
         private System.Windows.Forms.ListBox lstPlayerHand;
+        private System.Windows.Forms.Button button1;
     }
 }
 
