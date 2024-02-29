@@ -101,6 +101,7 @@
             this.btnHit.ForeColor = System.Drawing.SystemColors.Control;
             this.btnHit.Name = "btnHit";
             this.btnHit.UseVisualStyleBackColor = false;
+            this.btnHit.Click += new System.EventHandler(this.btnHit_Click);
             // 
             // btnStand
             // 

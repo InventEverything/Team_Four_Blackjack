@@ -16,6 +16,7 @@ namespace Team_Four_Blackjack
         bool DealtHandToggle = true;
         Random Shuffle = new Random(DateTime.Now.Millisecond);
         int DealtCard;
+        bool gameinprogress = false;
 
         public Form1()
         {
@@ -32,8 +33,10 @@ namespace Team_Four_Blackjack
                 DealtCard = Shuffle.Next(0, lstDeck.Items.Count);
                 lstDealerHand.Items.Add(lstDeck.Items[DealtCard]);
                 lstDeck.Items.Remove(lstDeck.Items[DealtCard]);
-                btnDeal.Enabled = false;
+                
             }
+            btnDeal.Enabled = false;
+            gameinprogress = true;
         }
 
         private void Clear_Table_Click(object sender, EventArgs e)
@@ -50,6 +53,18 @@ namespace Team_Four_Blackjack
             lstDealerHand.Items.Clear();
             btnDeal.Enabled = true;
             btnClearTable.Enabled = false;
+        }
+
+        private void btnHit_Click(object sender, EventArgs e)
+        {
+           if(gameinprogress == true)
+            {
+                DealtCard = Shuffle.Next(0, lstDeck.Items.Count);
+                lstPlayerHand.Items.Add(lstDeck.Items[DealtCard]);
+                lstDeck.Items.Remove(lstDeck.Items[DealtCard]);
+                //requires victory check 
+                //requires card animation update
+            }
         }
     }
 }
