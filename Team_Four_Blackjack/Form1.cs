@@ -14,7 +14,9 @@ namespace Team_Four_Blackjack
     public partial class Form1 : Form
     {
         bool DealtHandToggle = true;
-        
+        Random Shuffle = new Random(DateTime.Now.Millisecond);
+        int DealtCard;
+
         public Form1()
         {
             InitializeComponent();
