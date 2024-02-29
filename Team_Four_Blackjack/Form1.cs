@@ -10,13 +10,13 @@ using System.Windows.Forms;
 
 namespace Team_Four_Blackjack
 {
-    public partial class frmBlackjack : Form
+    public partial class frmBJ : Form
     {
         bool DealtHandToggle = true;
         Random Shuffle = new Random(DateTime.Now.Millisecond);
         int DealtCard;
 
-        public frmBlackjack()
+        public frmBJ()
         {
             InitializeComponent();
         }

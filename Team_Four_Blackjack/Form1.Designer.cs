@@ -1,6 +1,6 @@
 ﻿namespace Team_Four_Blackjack
 {
-    partial class frmBlackjack
+    partial class frmBJ
     {
         /// <summary>
         /// Required designer variable.
@@ -132,7 +132,7 @@
             this.btnClearTable.UseVisualStyleBackColor = true;
             this.btnClearTable.Click += new System.EventHandler(this.btnClearTable_Click);
             // 
-            // frmBlackjack
+            // frmBJ
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -142,7 +142,7 @@
             this.Controls.Add(this.lstPlayerHand);
             this.Controls.Add(this.lstDealerHand);
             this.Controls.Add(this.lstDeck);
-            this.Name = "frmBlackjack";
+            this.Name = "frmBJ";
             this.Text = "Form1";
             this.ResumeLayout(false);
 
