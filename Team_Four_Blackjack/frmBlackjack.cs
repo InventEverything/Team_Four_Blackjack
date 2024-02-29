@@ -48,6 +48,8 @@ namespace Team_Four_Blackjack
             {
                 lstDeck.Items.Add(lstPlayerHand.Items[i]);
             }
+            lstPlayerHand.Items.Clear();
+            lstDealerHand.Items.Clear();
         }
     }
 }
