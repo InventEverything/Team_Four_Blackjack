@@ -22,21 +22,34 @@ namespace Team_Four_Blackjack
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnDeal_Click(object sender, EventArgs e)
         {
-            DealtCard = Shuffle.Next(0, lstDeck.Items.Count);
-            if (DealtHandToggle)
+            for (int i = 0;i < 2; i++)
             {
+                DealtCard = Shuffle.Next(0, lstDeck.Items.Count);
                 lstPlayerHand.Items.Add(lstDeck.Items[DealtCard]);
                 lstDeck.Items.Remove(lstDeck.Items[DealtCard]);
-                DealtHandToggle = false;
-            }
-            else
-            {
+                DealtCard = Shuffle.Next(0, lstDeck.Items.Count);
                 lstDealerHand.Items.Add(lstDeck.Items[DealtCard]);
                 lstDeck.Items.Remove(lstDeck.Items[DealtCard]);
-                DealtHandToggle = true;
+                btnDeal.Enabled = false;
             }
+        }
+
+        private void Clear_Table_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < lstDealerHand.Items.Count; i++)
+            {
+                lstDeck.Items.Add(lstDealerHand.Items[i]);
+            }
+            for (int i = 0; i < lstPlayerHand.Items.Count; i++)
+            {
+                lstDeck.Items.Add(lstPlayerHand.Items[i]);
+            }
+            lstPlayerHand.Items.Clear();
+            lstDealerHand.Items.Clear();
+            btnDeal.Enabled = true;
+            btnClearTable.Enabled = false;
         }
     }
 }

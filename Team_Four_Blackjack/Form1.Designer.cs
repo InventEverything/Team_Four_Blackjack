@@ -58,7 +58,8 @@
             this.lstDeck = new System.Windows.Forms.ListBox();
             this.lstDealerHand = new System.Windows.Forms.ListBox();
             this.lstPlayerHand = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnDeal = new System.Windows.Forms.Button();
+            this.btnClearTable = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDealer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPlayerCard1)).BeginInit();
@@ -316,18 +317,26 @@
             resources.ApplyResources(this.lstPlayerHand, "lstPlayerHand");
             this.lstPlayerHand.Name = "lstPlayerHand";
             // 
-            // button1
+            // btnDeal
             // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            resources.ApplyResources(this.btnDeal, "btnDeal");
+            this.btnDeal.Name = "btnDeal";
+            this.btnDeal.UseVisualStyleBackColor = true;
+            this.btnDeal.Click += new System.EventHandler(this.btnDeal_Click);
+            // 
+            // btnClearTable
+            // 
+            resources.ApplyResources(this.btnClearTable, "btnClearTable");
+            this.btnClearTable.Name = "btnClearTable";
+            this.btnClearTable.UseVisualStyleBackColor = true;
+            this.btnClearTable.Click += new System.EventHandler(this.Clear_Table_Click);
             // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnClearTable);
+            this.Controls.Add(this.btnDeal);
             this.Controls.Add(this.lstPlayerHand);
             this.Controls.Add(this.lstDealerHand);
             this.Controls.Add(this.lstDeck);
@@ -418,7 +427,8 @@
         private System.Windows.Forms.ListBox lstDeck;
         private System.Windows.Forms.ListBox lstDealerHand;
         private System.Windows.Forms.ListBox lstPlayerHand;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDeal;
+        private System.Windows.Forms.Button btnClearTable;
     }
 }
 
