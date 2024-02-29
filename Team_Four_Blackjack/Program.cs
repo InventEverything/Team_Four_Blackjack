@@ -16,7 +16,7 @@ namespace Team_Four_Blackjack
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmBJ());
+            Application.Run(new Form1());
         }
     }
 }

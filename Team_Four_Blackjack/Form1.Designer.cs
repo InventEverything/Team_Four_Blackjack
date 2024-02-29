@@ -1,6 +1,6 @@
 ﻿namespace Team_Four_Blackjack
 {
-    partial class frmBJ
+    partial class Form1
     {
         /// <summary>
         /// Required designer variable.
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lstDeck = new System.Windows.Forms.ListBox();
             this.lstDealerHand = new System.Windows.Forms.ListBox();
             this.lstPlayerHand = new System.Windows.Forms.ListBox();
@@ -39,111 +40,97 @@
             // 
             this.lstDeck.FormattingEnabled = true;
             this.lstDeck.Items.AddRange(new object[] {
-            "11♥",
-            "02♥",
-            "03♥",
-            "04♥",
-            "05♥",
-            "06♥",
-            "07♥",
-            "08♥",
-            "09♥",
-            "10♥",
-            "10♥j",
-            "10♥q",
-            "10♥k",
-            "11♦",
-            "02♦",
-            "03♦",
-            "04♦",
-            "05♦",
-            "06♦",
-            "07♦",
-            "08♦",
-            "09♦",
-            "10♦",
-            "10♦j",
-            "10♦q",
-            "10♦k",
-            "11♣",
-            "02♣",
-            "03♣",
-            "04♣",
-            "05♣",
-            "06♣",
-            "07♣",
-            "08♣",
-            "09♣",
-            "10♣",
-            "10♣j",
-            "10♣q",
-            "10♣k",
-            "11♠",
-            "02♠",
-            "03♠",
-            "04♠",
-            "05♠",
-            "06♠",
-            "07♠",
-            "08♠",
-            "09♠",
-            "10♠",
-            "10♠j",
-            "10♠q",
-            "10♠k"});
-            this.lstDeck.Location = new System.Drawing.Point(735, 12);
+            resources.GetString("lstDeck.Items"),
+            resources.GetString("lstDeck.Items1"),
+            resources.GetString("lstDeck.Items2"),
+            resources.GetString("lstDeck.Items3"),
+            resources.GetString("lstDeck.Items4"),
+            resources.GetString("lstDeck.Items5"),
+            resources.GetString("lstDeck.Items6"),
+            resources.GetString("lstDeck.Items7"),
+            resources.GetString("lstDeck.Items8"),
+            resources.GetString("lstDeck.Items9"),
+            resources.GetString("lstDeck.Items10"),
+            resources.GetString("lstDeck.Items11"),
+            resources.GetString("lstDeck.Items12"),
+            resources.GetString("lstDeck.Items13"),
+            resources.GetString("lstDeck.Items14"),
+            resources.GetString("lstDeck.Items15"),
+            resources.GetString("lstDeck.Items16"),
+            resources.GetString("lstDeck.Items17"),
+            resources.GetString("lstDeck.Items18"),
+            resources.GetString("lstDeck.Items19"),
+            resources.GetString("lstDeck.Items20"),
+            resources.GetString("lstDeck.Items21"),
+            resources.GetString("lstDeck.Items22"),
+            resources.GetString("lstDeck.Items23"),
+            resources.GetString("lstDeck.Items24"),
+            resources.GetString("lstDeck.Items25"),
+            resources.GetString("lstDeck.Items26"),
+            resources.GetString("lstDeck.Items27"),
+            resources.GetString("lstDeck.Items28"),
+            resources.GetString("lstDeck.Items29"),
+            resources.GetString("lstDeck.Items30"),
+            resources.GetString("lstDeck.Items31"),
+            resources.GetString("lstDeck.Items32"),
+            resources.GetString("lstDeck.Items33"),
+            resources.GetString("lstDeck.Items34"),
+            resources.GetString("lstDeck.Items35"),
+            resources.GetString("lstDeck.Items36"),
+            resources.GetString("lstDeck.Items37"),
+            resources.GetString("lstDeck.Items38"),
+            resources.GetString("lstDeck.Items39"),
+            resources.GetString("lstDeck.Items40"),
+            resources.GetString("lstDeck.Items41"),
+            resources.GetString("lstDeck.Items42"),
+            resources.GetString("lstDeck.Items43"),
+            resources.GetString("lstDeck.Items44"),
+            resources.GetString("lstDeck.Items45"),
+            resources.GetString("lstDeck.Items46"),
+            resources.GetString("lstDeck.Items47"),
+            resources.GetString("lstDeck.Items48"),
+            resources.GetString("lstDeck.Items49"),
+            resources.GetString("lstDeck.Items50"),
+            resources.GetString("lstDeck.Items51")});
+            resources.ApplyResources(this.lstDeck, "lstDeck");
             this.lstDeck.Name = "lstDeck";
-            this.lstDeck.Size = new System.Drawing.Size(53, 433);
-            this.lstDeck.TabIndex = 0;
             // 
             // lstDealerHand
             // 
             this.lstDealerHand.FormattingEnabled = true;
-            this.lstDealerHand.Location = new System.Drawing.Point(676, 12);
+            resources.ApplyResources(this.lstDealerHand, "lstDealerHand");
             this.lstDealerHand.Name = "lstDealerHand";
-            this.lstDealerHand.Size = new System.Drawing.Size(53, 433);
-            this.lstDealerHand.TabIndex = 1;
             // 
             // lstPlayerHand
             // 
             this.lstPlayerHand.FormattingEnabled = true;
-            this.lstPlayerHand.Location = new System.Drawing.Point(617, 12);
+            resources.ApplyResources(this.lstPlayerHand, "lstPlayerHand");
             this.lstPlayerHand.Name = "lstPlayerHand";
-            this.lstPlayerHand.Size = new System.Drawing.Size(53, 433);
-            this.lstPlayerHand.TabIndex = 2;
             // 
             // btnTestRandCard
             // 
-            this.btnTestRandCard.Location = new System.Drawing.Point(224, 89);
+            resources.ApplyResources(this.btnTestRandCard, "btnTestRandCard");
             this.btnTestRandCard.Name = "btnTestRandCard";
-            this.btnTestRandCard.Size = new System.Drawing.Size(75, 23);
-            this.btnTestRandCard.TabIndex = 3;
-            this.btnTestRandCard.Text = "Deal 1 Card";
             this.btnTestRandCard.UseVisualStyleBackColor = true;
             this.btnTestRandCard.Click += new System.EventHandler(this.btnTestRandCard_Click);
             // 
             // btnClearTable
             // 
-            this.btnClearTable.Location = new System.Drawing.Point(224, 145);
+            resources.ApplyResources(this.btnClearTable, "btnClearTable");
             this.btnClearTable.Name = "btnClearTable";
-            this.btnClearTable.Size = new System.Drawing.Size(75, 23);
-            this.btnClearTable.TabIndex = 4;
-            this.btnClearTable.Text = "Clear Table";
             this.btnClearTable.UseVisualStyleBackColor = true;
             this.btnClearTable.Click += new System.EventHandler(this.btnClearTable_Click);
             // 
-            // frmBJ
+            // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnClearTable);
             this.Controls.Add(this.btnTestRandCard);
             this.Controls.Add(this.lstPlayerHand);
             this.Controls.Add(this.lstDealerHand);
             this.Controls.Add(this.lstDeck);
-            this.Name = "frmBJ";
-            this.Text = "Form1";
+            this.Name = "Form1";
             this.ResumeLayout(false);
 
         }
