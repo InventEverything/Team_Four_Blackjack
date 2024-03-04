@@ -66,5 +66,22 @@ namespace Team_Four_Blackjack
                 //requires card animation update
             }
         }
+
+        private void btnStand_Click(object sender, EventArgs e)
+        {
+            gameinprogress = false;
+            for (int i = 0; i < lstPlayerHand.Items.Count; i++)
+            {
+                //1stPlayerHand.SelectedIndex = i;
+                //int FaceCardCheck = 1stPlayerHand.SelectedItem.ToString().length;
+                //MessageBox.Show(1stPlayerHand.SelectedItem.ToString().Substring(0, 2));
+                //MessageBox.Show(1stPlayerHand.SelectedItem.ToString().Substring(2, 1));
+                //if (FaceCardCheck == 4)
+                //{
+                //    MessageBox.Show(1stPlayerHand.SelectedItem.ToString().Substring(3, 1));
+                //}
+            }
+            //requires dealer auto-play
+        }
     }
 }

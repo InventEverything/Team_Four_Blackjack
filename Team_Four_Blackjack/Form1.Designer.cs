@@ -110,6 +110,7 @@
             this.btnStand.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnStand.Name = "btnStand";
             this.btnStand.UseVisualStyleBackColor = false;
+            this.btnStand.Click += new System.EventHandler(this.btnStand_Click);
             // 
             // picPlayerCard1
             // 
