@@ -16,6 +16,7 @@ namespace Team_Four_Blackjack
         bool DealtHandToggle = true;
         Random Shuffle = new Random(DateTime.Now.Millisecond);
         int DealtCard;
+        int CardValue;
         bool gameinprogress = false;
 
         public Form1()
@@ -35,6 +36,7 @@ namespace Team_Four_Blackjack
                 lstDeck.Items.Remove(lstDeck.Items[DealtCard]);
                 
             }
+            HandValue(sender, e);
             btnDeal.Enabled = false;
             gameinprogress = true;
         }
@@ -62,26 +64,33 @@ namespace Team_Four_Blackjack
                 DealtCard = Shuffle.Next(0, lstDeck.Items.Count);
                 lstPlayerHand.Items.Add(lstDeck.Items[DealtCard]);
                 lstDeck.Items.Remove(lstDeck.Items[DealtCard]);
+                HandValue(sender, e);
                 //requires victory check 
                 //requires card animation update
+
             }
+
         }
 
         private void btnStand_Click(object sender, EventArgs e)
         {
             gameinprogress = false;
-            for (int i = 0; i < lstPlayerHand.Items.Count; i++)
             {
-                //1stPlayerHand.SelectedIndex = i;
-                //int FaceCardCheck = 1stPlayerHand.SelectedItem.ToString().length;
-                //MessageBox.Show(1stPlayerHand.SelectedItem.ToString().Substring(0, 2));
-                //MessageBox.Show(1stPlayerHand.SelectedItem.ToString().Substring(2, 1));
-                //if (FaceCardCheck == 4)
-                //{
-                //    MessageBox.Show(1stPlayerHand.SelectedItem.ToString().Substring(3, 1));
-                //}
+                
             }
             //requires dealer auto-play
+        }
+        private void HandValue(object sender, EventArgs e)
+        {
+            for (int i = 0; i < lstPlayerHand.Items.Count; i++)
+            {
+               lstPlayerHand.SelectedIndex = i;
+               CardValue += int.Parse(lstPlayerHand.SelectedItem.ToString().Substring(0, 2));
+            }
+            lblPlayerTotal.Text = "Player Total: " + CardValue;
+            CardValue = 0;
+            
+
         }
     }
 }
