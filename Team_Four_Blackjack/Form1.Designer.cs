@@ -29,10 +29,19 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.picTable = new System.Windows.Forms.PictureBox();
-            this.picDealer = new System.Windows.Forms.PictureBox();
             this.btnHit = new System.Windows.Forms.Button();
             this.btnStand = new System.Windows.Forms.Button();
+            this.lblDealerTotal = new System.Windows.Forms.Label();
+            this.lblPlayerWL = new System.Windows.Forms.Label();
+            this.lblPlayerTotal = new System.Windows.Forms.Label();
+            this.lblDealerWL = new System.Windows.Forms.Label();
+            this.lstDeck = new System.Windows.Forms.ListBox();
+            this.lstDealerHand = new System.Windows.Forms.ListBox();
+            this.lstPlayerHand = new System.Windows.Forms.ListBox();
+            this.btnDeal = new System.Windows.Forms.Button();
+            this.btnClearTable = new System.Windows.Forms.Button();
+            this.picTable = new System.Windows.Forms.PictureBox();
+            this.picDealer = new System.Windows.Forms.PictureBox();
             this.picPlayerCard1 = new System.Windows.Forms.PictureBox();
             this.picPlayerCard3 = new System.Windows.Forms.PictureBox();
             this.picPlayerCard2 = new System.Windows.Forms.PictureBox();
@@ -51,15 +60,6 @@
             this.picDealerCard3 = new System.Windows.Forms.PictureBox();
             this.picDealerCard2 = new System.Windows.Forms.PictureBox();
             this.picDealerCard1 = new System.Windows.Forms.PictureBox();
-            this.lblDealerTotal = new System.Windows.Forms.Label();
-            this.lblPlayerWL = new System.Windows.Forms.Label();
-            this.lblPlayerTotal = new System.Windows.Forms.Label();
-            this.lblDealerWL = new System.Windows.Forms.Label();
-            this.lstDeck = new System.Windows.Forms.ListBox();
-            this.lstDealerHand = new System.Windows.Forms.ListBox();
-            this.lstPlayerHand = new System.Windows.Forms.ListBox();
-            this.btnDeal = new System.Windows.Forms.Button();
-            this.btnClearTable = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDealer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPlayerCard1)).BeginInit();
@@ -82,18 +82,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.picDealerCard1)).BeginInit();
             this.SuspendLayout();
             // 
-            // picTable
-            // 
-            resources.ApplyResources(this.picTable, "picTable");
-            this.picTable.Name = "picTable";
-            this.picTable.TabStop = false;
-            // 
-            // picDealer
-            // 
-            resources.ApplyResources(this.picDealer, "picDealer");
-            this.picDealer.Name = "picDealer";
-            this.picDealer.TabStop = false;
-            // 
             // btnHit
             // 
             this.btnHit.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -109,114 +97,6 @@
             this.btnStand.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnStand.Name = "btnStand";
             this.btnStand.UseVisualStyleBackColor = false;
-            // 
-            // picPlayerCard1
-            // 
-            resources.ApplyResources(this.picPlayerCard1, "picPlayerCard1");
-            this.picPlayerCard1.Name = "picPlayerCard1";
-            this.picPlayerCard1.TabStop = false;
-            // 
-            // picPlayerCard3
-            // 
-            resources.ApplyResources(this.picPlayerCard3, "picPlayerCard3");
-            this.picPlayerCard3.Name = "picPlayerCard3";
-            this.picPlayerCard3.TabStop = false;
-            // 
-            // picPlayerCard2
-            // 
-            resources.ApplyResources(this.picPlayerCard2, "picPlayerCard2");
-            this.picPlayerCard2.Name = "picPlayerCard2";
-            this.picPlayerCard2.TabStop = false;
-            // 
-            // picPlayerCard4
-            // 
-            resources.ApplyResources(this.picPlayerCard4, "picPlayerCard4");
-            this.picPlayerCard4.Name = "picPlayerCard4";
-            this.picPlayerCard4.TabStop = false;
-            // 
-            // picPlayerCard5
-            // 
-            resources.ApplyResources(this.picPlayerCard5, "picPlayerCard5");
-            this.picPlayerCard5.Name = "picPlayerCard5";
-            this.picPlayerCard5.TabStop = false;
-            // 
-            // picPlayerCard6
-            // 
-            resources.ApplyResources(this.picPlayerCard6, "picPlayerCard6");
-            this.picPlayerCard6.Name = "picPlayerCard6";
-            this.picPlayerCard6.TabStop = false;
-            // 
-            // picPlayerCard7
-            // 
-            resources.ApplyResources(this.picPlayerCard7, "picPlayerCard7");
-            this.picPlayerCard7.Name = "picPlayerCard7";
-            this.picPlayerCard7.TabStop = false;
-            // 
-            // picPlayerCard8
-            // 
-            resources.ApplyResources(this.picPlayerCard8, "picPlayerCard8");
-            this.picPlayerCard8.Name = "picPlayerCard8";
-            this.picPlayerCard8.TabStop = false;
-            // 
-            // picPlayerCard9
-            // 
-            resources.ApplyResources(this.picPlayerCard9, "picPlayerCard9");
-            this.picPlayerCard9.Name = "picPlayerCard9";
-            this.picPlayerCard9.TabStop = false;
-            // 
-            // picDealerCard9
-            // 
-            resources.ApplyResources(this.picDealerCard9, "picDealerCard9");
-            this.picDealerCard9.Name = "picDealerCard9";
-            this.picDealerCard9.TabStop = false;
-            // 
-            // picDealerCard8
-            // 
-            resources.ApplyResources(this.picDealerCard8, "picDealerCard8");
-            this.picDealerCard8.Name = "picDealerCard8";
-            this.picDealerCard8.TabStop = false;
-            // 
-            // picDealerCard7
-            // 
-            resources.ApplyResources(this.picDealerCard7, "picDealerCard7");
-            this.picDealerCard7.Name = "picDealerCard7";
-            this.picDealerCard7.TabStop = false;
-            // 
-            // picDealerCard6
-            // 
-            resources.ApplyResources(this.picDealerCard6, "picDealerCard6");
-            this.picDealerCard6.Name = "picDealerCard6";
-            this.picDealerCard6.TabStop = false;
-            // 
-            // picDealerCard5
-            // 
-            resources.ApplyResources(this.picDealerCard5, "picDealerCard5");
-            this.picDealerCard5.Name = "picDealerCard5";
-            this.picDealerCard5.TabStop = false;
-            // 
-            // picDealerCard4
-            // 
-            resources.ApplyResources(this.picDealerCard4, "picDealerCard4");
-            this.picDealerCard4.Name = "picDealerCard4";
-            this.picDealerCard4.TabStop = false;
-            // 
-            // picDealerCard3
-            // 
-            resources.ApplyResources(this.picDealerCard3, "picDealerCard3");
-            this.picDealerCard3.Name = "picDealerCard3";
-            this.picDealerCard3.TabStop = false;
-            // 
-            // picDealerCard2
-            // 
-            resources.ApplyResources(this.picDealerCard2, "picDealerCard2");
-            this.picDealerCard2.Name = "picDealerCard2";
-            this.picDealerCard2.TabStop = false;
-            // 
-            // picDealerCard1
-            // 
-            resources.ApplyResources(this.picDealerCard1, "picDealerCard1");
-            this.picDealerCard1.Name = "picDealerCard1";
-            this.picDealerCard1.TabStop = false;
             // 
             // lblDealerTotal
             // 
@@ -331,28 +211,130 @@
             this.btnClearTable.UseVisualStyleBackColor = true;
             this.btnClearTable.Click += new System.EventHandler(this.Clear_Table_Click);
             // 
+            // picTable
+            // 
+            resources.ApplyResources(this.picTable, "picTable");
+            this.picTable.Name = "picTable";
+            this.picTable.TabStop = false;
+            // 
+            // picDealer
+            // 
+            resources.ApplyResources(this.picDealer, "picDealer");
+            this.picDealer.Name = "picDealer";
+            this.picDealer.TabStop = false;
+            // 
+            // picPlayerCard1
+            // 
+            resources.ApplyResources(this.picPlayerCard1, "picPlayerCard1");
+            this.picPlayerCard1.Name = "picPlayerCard1";
+            this.picPlayerCard1.TabStop = false;
+            // 
+            // picPlayerCard3
+            // 
+            resources.ApplyResources(this.picPlayerCard3, "picPlayerCard3");
+            this.picPlayerCard3.Name = "picPlayerCard3";
+            this.picPlayerCard3.TabStop = false;
+            // 
+            // picPlayerCard2
+            // 
+            resources.ApplyResources(this.picPlayerCard2, "picPlayerCard2");
+            this.picPlayerCard2.Name = "picPlayerCard2";
+            this.picPlayerCard2.TabStop = false;
+            // 
+            // picPlayerCard4
+            // 
+            resources.ApplyResources(this.picPlayerCard4, "picPlayerCard4");
+            this.picPlayerCard4.Name = "picPlayerCard4";
+            this.picPlayerCard4.TabStop = false;
+            // 
+            // picPlayerCard5
+            // 
+            resources.ApplyResources(this.picPlayerCard5, "picPlayerCard5");
+            this.picPlayerCard5.Name = "picPlayerCard5";
+            this.picPlayerCard5.TabStop = false;
+            // 
+            // picPlayerCard6
+            // 
+            resources.ApplyResources(this.picPlayerCard6, "picPlayerCard6");
+            this.picPlayerCard6.Name = "picPlayerCard6";
+            this.picPlayerCard6.TabStop = false;
+            // 
+            // picPlayerCard7
+            // 
+            resources.ApplyResources(this.picPlayerCard7, "picPlayerCard7");
+            this.picPlayerCard7.Name = "picPlayerCard7";
+            this.picPlayerCard7.TabStop = false;
+            // 
+            // picPlayerCard8
+            // 
+            resources.ApplyResources(this.picPlayerCard8, "picPlayerCard8");
+            this.picPlayerCard8.Name = "picPlayerCard8";
+            this.picPlayerCard8.TabStop = false;
+            // 
+            // picPlayerCard9
+            // 
+            resources.ApplyResources(this.picPlayerCard9, "picPlayerCard9");
+            this.picPlayerCard9.Name = "picPlayerCard9";
+            this.picPlayerCard9.TabStop = false;
+            // 
+            // picDealerCard9
+            // 
+            resources.ApplyResources(this.picDealerCard9, "picDealerCard9");
+            this.picDealerCard9.Name = "picDealerCard9";
+            this.picDealerCard9.TabStop = false;
+            // 
+            // picDealerCard8
+            // 
+            resources.ApplyResources(this.picDealerCard8, "picDealerCard8");
+            this.picDealerCard8.Name = "picDealerCard8";
+            this.picDealerCard8.TabStop = false;
+            // 
+            // picDealerCard7
+            // 
+            resources.ApplyResources(this.picDealerCard7, "picDealerCard7");
+            this.picDealerCard7.Name = "picDealerCard7";
+            this.picDealerCard7.TabStop = false;
+            // 
+            // picDealerCard6
+            // 
+            resources.ApplyResources(this.picDealerCard6, "picDealerCard6");
+            this.picDealerCard6.Name = "picDealerCard6";
+            this.picDealerCard6.TabStop = false;
+            // 
+            // picDealerCard5
+            // 
+            resources.ApplyResources(this.picDealerCard5, "picDealerCard5");
+            this.picDealerCard5.Name = "picDealerCard5";
+            this.picDealerCard5.TabStop = false;
+            // 
+            // picDealerCard4
+            // 
+            resources.ApplyResources(this.picDealerCard4, "picDealerCard4");
+            this.picDealerCard4.Name = "picDealerCard4";
+            this.picDealerCard4.TabStop = false;
+            // 
+            // picDealerCard3
+            // 
+            resources.ApplyResources(this.picDealerCard3, "picDealerCard3");
+            this.picDealerCard3.Name = "picDealerCard3";
+            this.picDealerCard3.TabStop = false;
+            // 
+            // picDealerCard2
+            // 
+            resources.ApplyResources(this.picDealerCard2, "picDealerCard2");
+            this.picDealerCard2.Name = "picDealerCard2";
+            this.picDealerCard2.TabStop = false;
+            // 
+            // picDealerCard1
+            // 
+            resources.ApplyResources(this.picDealerCard1, "picDealerCard1");
+            this.picDealerCard1.Name = "picDealerCard1";
+            this.picDealerCard1.TabStop = false;
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnClearTable);
-            this.Controls.Add(this.btnDeal);
-            this.Controls.Add(this.lstPlayerHand);
-            this.Controls.Add(this.lstDealerHand);
-            this.Controls.Add(this.lstDeck);
-            this.Controls.Add(this.lblDealerWL);
-            this.Controls.Add(this.lblPlayerTotal);
-            this.Controls.Add(this.lblPlayerWL);
-            this.Controls.Add(this.lblDealerTotal);
-            this.Controls.Add(this.picDealerCard9);
-            this.Controls.Add(this.picDealerCard8);
-            this.Controls.Add(this.picDealerCard7);
-            this.Controls.Add(this.picDealerCard6);
-            this.Controls.Add(this.picDealerCard5);
-            this.Controls.Add(this.picDealerCard4);
-            this.Controls.Add(this.picDealerCard3);
-            this.Controls.Add(this.picDealerCard2);
-            this.Controls.Add(this.picDealerCard1);
             this.Controls.Add(this.picPlayerCard9);
             this.Controls.Add(this.picPlayerCard8);
             this.Controls.Add(this.picPlayerCard7);
@@ -362,6 +344,24 @@
             this.Controls.Add(this.picPlayerCard3);
             this.Controls.Add(this.picPlayerCard2);
             this.Controls.Add(this.picPlayerCard1);
+            this.Controls.Add(this.picDealerCard9);
+            this.Controls.Add(this.picDealerCard8);
+            this.Controls.Add(this.picDealerCard7);
+            this.Controls.Add(this.picDealerCard6);
+            this.Controls.Add(this.picDealerCard5);
+            this.Controls.Add(this.picDealerCard4);
+            this.Controls.Add(this.picDealerCard3);
+            this.Controls.Add(this.picDealerCard2);
+            this.Controls.Add(this.picDealerCard1);
+            this.Controls.Add(this.btnClearTable);
+            this.Controls.Add(this.btnDeal);
+            this.Controls.Add(this.lstPlayerHand);
+            this.Controls.Add(this.lstDealerHand);
+            this.Controls.Add(this.lstDeck);
+            this.Controls.Add(this.lblDealerWL);
+            this.Controls.Add(this.lblPlayerTotal);
+            this.Controls.Add(this.lblPlayerWL);
+            this.Controls.Add(this.lblDealerTotal);
             this.Controls.Add(this.btnStand);
             this.Controls.Add(this.btnHit);
             this.Controls.Add(this.picDealer);
@@ -403,23 +403,23 @@
         private System.Windows.Forms.Button btnHit;
         private System.Windows.Forms.Button btnStand;
         private System.Windows.Forms.PictureBox picPlayerCard1;
-        private System.Windows.Forms.PictureBox picPlayerCard3;
         private System.Windows.Forms.PictureBox picPlayerCard2;
+        private System.Windows.Forms.PictureBox picPlayerCard3;
         private System.Windows.Forms.PictureBox picPlayerCard4;
         private System.Windows.Forms.PictureBox picPlayerCard5;
         private System.Windows.Forms.PictureBox picPlayerCard6;
         private System.Windows.Forms.PictureBox picPlayerCard7;
         private System.Windows.Forms.PictureBox picPlayerCard8;
         private System.Windows.Forms.PictureBox picPlayerCard9;
-        private System.Windows.Forms.PictureBox picDealerCard9;
-        private System.Windows.Forms.PictureBox picDealerCard8;
-        private System.Windows.Forms.PictureBox picDealerCard7;
-        private System.Windows.Forms.PictureBox picDealerCard6;
-        private System.Windows.Forms.PictureBox picDealerCard5;
-        private System.Windows.Forms.PictureBox picDealerCard4;
-        private System.Windows.Forms.PictureBox picDealerCard3;
-        private System.Windows.Forms.PictureBox picDealerCard2;
         private System.Windows.Forms.PictureBox picDealerCard1;
+        private System.Windows.Forms.PictureBox picDealerCard2;
+        private System.Windows.Forms.PictureBox picDealerCard3;
+        private System.Windows.Forms.PictureBox picDealerCard4;
+        private System.Windows.Forms.PictureBox picDealerCard5;
+        private System.Windows.Forms.PictureBox picDealerCard6;
+        private System.Windows.Forms.PictureBox picDealerCard7;
+        private System.Windows.Forms.PictureBox picDealerCard8;
+        private System.Windows.Forms.PictureBox picDealerCard9;
         private System.Windows.Forms.Label lblDealerTotal;
         private System.Windows.Forms.Label lblPlayerWL;
         private System.Windows.Forms.Label lblPlayerTotal;
