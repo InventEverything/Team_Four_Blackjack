@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Team_Four_Blackjack
 {
-    public partial class Form1 : Form
+    public partial class frmBlackjack : Form
     {
         bool DealtHandToggle = true;
         Random Shuffle = new Random(DateTime.Now.Millisecond);
@@ -20,7 +20,7 @@ namespace Team_Four_Blackjack
         PictureBox[] PlayerHand = new PictureBox[9];
         PictureBox[] DealerHand = new PictureBox[8];
 
-        public Form1()
+        public frmBlackjack()
         {
             InitializeComponent();
             PlayerHand = new PictureBox[] { picPlayerCard1, picPlayerCard2, picPlayerCard3, picPlayerCard4, picPlayerCard5, picPlayerCard6, picPlayerCard7, picPlayerCard8, picPlayerCard9 };
