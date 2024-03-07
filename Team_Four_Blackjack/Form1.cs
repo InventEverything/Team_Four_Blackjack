@@ -36,6 +36,7 @@ namespace Team_Four_Blackjack
                 lstDeck.Items.Remove(lstDeck.Items[DealtCard]);
                 
             }
+            DealerValue(sender, e);
             HandValue(sender, e);
             btnDeal.Enabled = false;
             gameinprogress = true;
@@ -64,6 +65,7 @@ namespace Team_Four_Blackjack
                 DealtCard = Shuffle.Next(0, lstDeck.Items.Count);
                 lstPlayerHand.Items.Add(lstDeck.Items[DealtCard]);
                 lstDeck.Items.Remove(lstDeck.Items[DealtCard]);
+                DealerValue(sender, e);
                 HandValue(sender, e);
                 //requires victory check 
                 //requires card animation update
@@ -90,6 +92,18 @@ namespace Team_Four_Blackjack
             lblPlayerTotal.Text = "Player Total: " + CardValue;
             CardValue = 0;
             
+
+        }
+        private void DealerValue(object sender, EventArgs e)
+        {
+            for (int i = 0; i < lstDealerHand.Items.Count; i++)
+            {
+                lstDealerHand.SelectedIndex = i;
+                CardValue += int.Parse(lstDealerHand.SelectedItem.ToString().Substring(0, 2));
+            }
+            lblDealerTotal.Text = "Dealer Total: " + CardValue;
+            CardValue = 0;
+
 
         }
     }
