@@ -89,6 +89,7 @@
             this.btnHit.ForeColor = System.Drawing.SystemColors.Control;
             this.btnHit.Name = "btnHit";
             this.btnHit.UseVisualStyleBackColor = false;
+            this.btnHit.Click += new System.EventHandler(this.btnHit_Click);
             // 
             // btnStand
             // 
@@ -97,6 +98,7 @@
             this.btnStand.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnStand.Name = "btnStand";
             this.btnStand.UseVisualStyleBackColor = false;
+            this.btnStand.Click += new System.EventHandler(this.btnStand_Click);
             // 
             // lblDealerTotal
             // 
