@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Team_Four_Blackjack
 {
-    public partial class Form1 : Form
+    public partial class frmBlackjack : Form
     {
         bool DealtHandToggle = true;
         Random Shuffle = new Random(DateTime.Now.Millisecond);
@@ -22,7 +22,7 @@ namespace Team_Four_Blackjack
         PictureBox[] PlayerHand = new PictureBox[9];
         PictureBox[] DealerHand = new PictureBox[8];
 
-        public Form1()
+        public frmBlackjack()
         {
             InitializeComponent();
             PlayerHand = new PictureBox[] { picPlayerCard1, picPlayerCard2, picPlayerCard3, picPlayerCard4, picPlayerCard5, picPlayerCard6, picPlayerCard7, picPlayerCard8, picPlayerCard9 };
@@ -139,7 +139,7 @@ namespace Team_Four_Blackjack
                     return Properties.Resources._9_of_hearts;
                 else if (value == "10")
                     return Properties.Resources._10_of_hearts;
-                else
+                else //Ace
                     return Properties.Resources.ace_of_hearts;
             }
             else if (suit == "♦")
@@ -162,7 +162,7 @@ namespace Team_Four_Blackjack
                     return Properties.Resources._9_of_diamonds;
                 else if (value == "10")
                     return Properties.Resources._10_of_diamonds;
-                else
+                else //Ace
                     return Properties.Resources.ace_of_diamonds;
             }
             else if (suit == "♣")
@@ -185,7 +185,7 @@ namespace Team_Four_Blackjack
                     return Properties.Resources._9_of_clubs;
                 else if (value == "10")
                     return Properties.Resources._10_of_clubs;
-                else
+                else //Ace
                     return Properties.Resources.ace_of_clubs;
             }
             else //spades
@@ -208,7 +208,7 @@ namespace Team_Four_Blackjack
                     return Properties.Resources._9_of_spades;
                 else if (value == "10")
                     return Properties.Resources._10_of_spades;
-                else
+                else //Ace
                     return Properties.Resources.ace_of_spades;
             }
         }
@@ -220,7 +220,7 @@ namespace Team_Four_Blackjack
                     return Properties.Resources.jack_of_hearts2;
                 else if (face == "q")
                     return Properties.Resources.queen_of_hearts2;
-                else
+                else //king
                     return Properties.Resources.king_of_hearts2;
             }
             else if (suit == "♦")
@@ -229,7 +229,7 @@ namespace Team_Four_Blackjack
                     return Properties.Resources.jack_of_diamonds2;
                 else if (face == "q")
                     return Properties.Resources.queen_of_diamonds2;
-                else
+                else //king
                     return Properties.Resources.king_of_diamonds2;
             }
             else if (suit == "♣")
@@ -238,7 +238,7 @@ namespace Team_Four_Blackjack
                     return Properties.Resources.jack_of_clubs2;
                 else if (face == "q")
                     return Properties.Resources.queen_of_clubs2;
-                else
+                else //king
                     return Properties.Resources.king_of_clubs2;
             }
             else //spades
@@ -247,7 +247,7 @@ namespace Team_Four_Blackjack
                     return Properties.Resources.jack_of_spades2;
                 else if (face == "q")
                     return Properties.Resources.queen_of_spades2;
-                else
+                else //king
                     return Properties.Resources.king_of_spades2;
             }
         }
