@@ -18,8 +18,8 @@ namespace Team_Four_Blackjack
         private string playerName = "Player";
         private bool gameInProgress = false;
         private Random shuffle = new Random(DateTime.Now.Millisecond);
-        private List<PictureBox> playerHand = new List<PictureBox>();
-        private List<PictureBox> dealerHand = new List<PictureBox>();
+        PictureBox[] PlayerHand = new PictureBox[9];
+        PictureBox[] DealerHand = new PictureBox[8];
 
         public frmBlackjack()
         {
@@ -28,8 +28,8 @@ namespace Team_Four_Blackjack
             txtPlayerName.Visible = false;
             btnPlayerName.Enabled = false;
 
-            playerHand.AddRange(new PictureBox[] { picPlayerCard1, picPlayerCard2, picPlayerCard3, picPlayerCard4, picPlayerCard5, picPlayerCard6, picPlayerCard7, picPlayerCard8, picPlayerCard9 });
-            dealerHand.AddRange(new PictureBox[] { picDealerCard1, picDealerCard2, picDealerCard3, picDealerCard4, picDealerCard5, picDealerCard6, picDealerCard7, picDealerCard8 });
+            PlayerHand = new PictureBox[] { picPlayerCard1, picPlayerCard2, picPlayerCard3, picPlayerCard4, picPlayerCard5, picPlayerCard6, picPlayerCard7, picPlayerCard8, picPlayerCard9 };
+            DealerHand = new PictureBox[] { picDealerCard1, picDealerCard2, picDealerCard3, picDealerCard4, picDealerCard5, picDealerCard6, picDealerCard7, picDealerCard8 };
         }
 
         private void btnSubmitName_Click(object sender, EventArgs e)
@@ -109,7 +109,6 @@ namespace Team_Four_Blackjack
             ClearHand(lstPlayerHand);
             btnDeal.Enabled = true;
             btnClearTable.Enabled = false;
-            gameInProgress = false;
             UpdateDisplayedCards();
         }
 
@@ -121,23 +120,25 @@ namespace Team_Four_Blackjack
 
         private void UpdateDisplayedCards()
         {
-            UpdateHandDisplay(lstPlayerHand, playerHand);
-            UpdateHandDisplay(lstDealerHand, dealerHand);
+            UpdateHandDisplay(lstPlayerHand, PlayerHand);
+            UpdateHandDisplay(lstDealerHand, DealerHand);
         }
 
-        private void UpdateHandDisplay(ListBox handList, List<PictureBox> handPictureBoxes)
+        private void UpdateHandDisplay(ListBox handList, PictureBox[] handPictureBoxes)
         {
             for (int i = 0; i < handList.Items.Count; i++)
             {
                 handList.SelectedIndex = i;
                 string card = handList.SelectedItem.ToString();
-                Image cardImage = CardImageGetter(card.Substring(0, 2), card.Substring(2, 1), card.Length == 4 ? card.Substring(3, 1) : null);
-                handPictureBoxes[i].Image = cardImage;
+                if (card.Length == 4)
+                    handPictureBoxes[i].Image = CardImageGetter(card.Substring(0, 2), card.Substring(2, 1), card.Substring(3, 1));
+                else
+                    handPictureBoxes[i].Image = CardImageGetter(card.Substring(0, 2), card.Substring(2, 1));
                 handPictureBoxes[i].Visible = true;
                 handPictureBoxes[i].BringToFront();
             }
 
-            for (int i = handList.Items.Count; i < handPictureBoxes.Count; i++)
+            for (int i = handList.Items.Count; i < handPictureBoxes.Length; i++)
             {
                 handPictureBoxes[i].Image = null;
                 handPictureBoxes[i].Visible = false;
@@ -176,37 +177,37 @@ namespace Team_Four_Blackjack
 
                 HandValue(lstDealerHand, lblDealerTotal);
                 UpdateDisplayedCards();
-                DetermineWinner();
+                //DetermineWinner();
                 EndGame();
             }
         }
 
-        private void DetermineWinner()
-        {
-            int playerTotal = GetHandTotal(lstPlayerHand);
-            int dealerTotal = GetHandTotal(lstDealerHand);
+        //private void DetermineWinner()
+        //{
+        //    int playerTotal = GetHandTotal(lstPlayerHand);
+        //    int dealerTotal = GetHandTotal(lstDealerHand);
 
-            lblPlayerTotal.Text = "Player Total: " + playerTotal;
-            lblDealerTotal.Text = "Dealer Total: " + dealerTotal;
+        //    lblPlayerTotal.Text = "Player Total: " + playerTotal;
+        //    lblDealerTotal.Text = "Dealer Total: " + dealerTotal;
 
-            if (playerTotal > 21 || (dealerTotal <= 21 && dealerTotal > playerTotal))
-            {
-                MessageBox.Show("Dealer wins!");
-            }
-            else if (dealerTotal > 21 || playerTotal > dealerTotal)
-            {
-                MessageBox.Show("Player wins!");
-            }
-            else
-            {
-                MessageBox.Show("It's a tie!");
-            }
-        }
+        //    if (playerTotal > 21 || (dealerTotal <= 21 && dealerTotal > playerTotal))
+        //    {
+        //        MessageBox.Show("Dealer wins!");
+        //    }
+        //    else if (dealerTotal > 21 || playerTotal > dealerTotal)
+        //    {
+        //        MessageBox.Show("Player wins!");
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("It's a tie!");
+        //    }
+        //}
 
         private void EndGame(string message = "")
         {
             gameInProgress = false;
-            btnDeal.Enabled = true;
+            btnDeal.Enabled = false;
             btnClearTable.Enabled = true;
             MessageBox.Show(message, "Game Over");
         }
@@ -225,12 +226,11 @@ namespace Team_Four_Blackjack
             for (int i = 0; i < handList.Items.Count; i++)
             {
                 handList.SelectedIndex = i;
-                int cardValue = GetCardValue(handList.SelectedItem.ToString());
+                int cardValue = int.Parse(handList.SelectedItem.ToString().Substring(0,2));
 
                 // Ace always plays as 11
-                if (cardValue == 1)
+                if (cardValue == 11)
                 {
-                    cardValue = 11;
                     numberOfAces++;
                 }
 
@@ -245,27 +245,6 @@ namespace Team_Four_Blackjack
             }
 
             return total;
-        }
-
-        private int GetCardValue(string card)
-        {
-            int value = int.Parse(card.Substring(0, 2));
-
-            // Face cards and 10 have a value of 10
-            if (value > 10)
-            {
-                return 10;
-            }
-            // Ace has a value of 11
-            else if (value == 1)
-            {
-                return 11;
-            }
-            // Other cards have their face value
-            else
-            {
-                return value;
-            }
         }
 
         private Image CardImageGetter(string value, string suit)
