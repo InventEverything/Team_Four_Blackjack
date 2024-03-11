@@ -64,6 +64,8 @@
             this.lblPlayerName = new System.Windows.Forms.Label();
             this.txtPlayerName = new System.Windows.Forms.TextBox();
             this.btnSubmitName = new System.Windows.Forms.Button();
+            this.lblGameOver = new System.Windows.Forms.Label();
+            this.lblStatusMessage = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picPlayerCard9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPlayerCard8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPlayerCard7)).BeginInit();
@@ -361,10 +363,22 @@
             this.btnSubmitName.UseVisualStyleBackColor = true;
             this.btnSubmitName.Click += new System.EventHandler(this.btnSubmitName_Click);
             // 
+            // lblGameOver
+            // 
+            resources.ApplyResources(this.lblGameOver, "lblGameOver");
+            this.lblGameOver.Name = "lblGameOver";
+            // 
+            // lblStatusMessage
+            // 
+            resources.ApplyResources(this.lblStatusMessage, "lblStatusMessage");
+            this.lblStatusMessage.Name = "lblStatusMessage";
+            // 
             // frmBlackjack
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblStatusMessage);
+            this.Controls.Add(this.lblGameOver);
             this.Controls.Add(this.btnSubmitName);
             this.Controls.Add(this.txtPlayerName);
             this.Controls.Add(this.lblPlayerName);
@@ -467,6 +481,8 @@
         private System.Windows.Forms.Button btnSubmitName;
         public System.Windows.Forms.Label lblPlayerName;
         public System.Windows.Forms.Button btnPlayerName;
+        private System.Windows.Forms.Label lblGameOver;
+        private System.Windows.Forms.Label lblStatusMessage;
     }
 }
 

@@ -15,11 +15,16 @@ namespace Team_Four_Blackjack
 {
     public partial class frmBlackjack : Form
     {
-        private string playerName = "Player";
-        private bool gameInProgress = false;
-        private Random shuffle = new Random(DateTime.Now.Millisecond);
+        string playerName = "Player";
+        bool gameInProgress = false;
+        Random shuffle = new Random(DateTime.Now.Millisecond);
         PictureBox[] PlayerHand = new PictureBox[9];
         PictureBox[] DealerHand = new PictureBox[8];
+        string GameOver;
+        string PlayerName;
+        int PlayerTotal;
+        int DealerTotal;
+
 
         public frmBlackjack()
         {
@@ -53,23 +58,18 @@ namespace Team_Four_Blackjack
         {
             if (btnPlayerName.Enabled)
             {
-                if (txtPlayerName.Text.Trim().Length >= 2)
-                {
-                    playerName = txtPlayerName.Text.Trim();
+                    PlayerName = txtPlayerName.Text.Trim();
 
-                    lblPlayerName.Text = $"Player: {playerName}";
+                    lblPlayerName.Text = $"Player: {PlayerName}";
 
                     txtPlayerName.Visible = false;
                     btnPlayerName.Visible = false;
-
+                    //Center the player name independent of name length
+                    lblPlayerName.Location = new Point(this.Size.Width/2-lblPlayerName.Width/2, 433);
                     lblPlayerName.Visible = true;
 
                     txtPlayerName.TextChanged -= txtPlayerName_TextChanged;
-                }
-                else
-                {
-                    MessageBox.Show("Please enter a valid name with at least 2 characters before proceeding.");
-                }
+                    btnDeal.Enabled = true;
             }
         }
 
@@ -81,7 +81,11 @@ namespace Team_Four_Blackjack
                 gameInProgress = true;
                 btnDeal.Enabled = false;
                 btnClearTable.Enabled = false;
+                lblGameOver.Visible = false;
                 UpdateDisplayedCards();
+                DetermineWinner();
+                if(DealerTotal==21)
+                    EndGame();
             }
         }
 
@@ -92,8 +96,8 @@ namespace Team_Four_Blackjack
                 DealCard(lstPlayerHand);
                 DealCard(lstDealerHand);
             }
-            HandValue(lstPlayerHand, lblPlayerTotal);
-            HandValue(lstDealerHand, lblDealerTotal);
+            HandValue();
+            DealerHandValue();
         }
 
         private void DealCard(ListBox hand)
@@ -107,8 +111,11 @@ namespace Team_Four_Blackjack
         {
             ClearHand(lstDealerHand);
             ClearHand(lstPlayerHand);
+            HandValue();
+            DealerHandValue();
             btnDeal.Enabled = true;
             btnClearTable.Enabled = false;
+            lblGameOver.Visible = false;
             UpdateDisplayedCards();
         }
 
@@ -150,11 +157,14 @@ namespace Team_Four_Blackjack
             if (gameInProgress)
             {
                 DealCard(lstPlayerHand);
-                HandValue(lstPlayerHand, lblPlayerTotal);
+                HandValue();
 
                 if (GetHandTotal(lstPlayerHand) > 21)
                 {
-                    MessageBox.Show("Bust! Player total exceeds 21.");
+                    UpdateDisplayedCards();
+                    lblStatusMessage.Text = "Bust! Player total exceeds 21.";
+                    lblStatusMessage.Location = new Point(this.Width / 2 - lblStatusMessage.Width / 2, 350);
+                    lblStatusMessage.Visible = true;
                     EndGame("Dealer wins!");
                 }
                 else
@@ -175,47 +185,51 @@ namespace Team_Four_Blackjack
                     System.Threading.Thread.Sleep(500);
                 }
 
-                HandValue(lstDealerHand, lblDealerTotal);
+                DealerHandValue();
                 UpdateDisplayedCards();
-                //DetermineWinner();
                 EndGame();
             }
         }
 
-        //private void DetermineWinner()
-        //{
-        //    int playerTotal = GetHandTotal(lstPlayerHand);
-        //    int dealerTotal = GetHandTotal(lstDealerHand);
+        private void DetermineWinner()
+        {
+            PlayerTotal = GetHandTotal(lstPlayerHand);
+            DealerTotal = GetHandTotal(lstDealerHand);
 
-        //    lblPlayerTotal.Text = "Player Total: " + playerTotal;
-        //    lblDealerTotal.Text = "Dealer Total: " + dealerTotal;
-
-        //    if (playerTotal > 21 || (dealerTotal <= 21 && dealerTotal > playerTotal))
-        //    {
-        //        MessageBox.Show("Dealer wins!");
-        //    }
-        //    else if (dealerTotal > 21 || playerTotal > dealerTotal)
-        //    {
-        //        MessageBox.Show("Player wins!");
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("It's a tie!");
-        //    }
-        //}
+            if (PlayerTotal > 21 || (DealerTotal <= 21 && DealerTotal > PlayerTotal))
+            {
+                 GameOver = "Dealer wins!";
+            }
+            else if (DealerTotal > 21 || PlayerTotal > DealerTotal)
+            {
+                 GameOver = PlayerName + " wins!";
+            }
+            else
+            {
+                 GameOver = "It's a tie!";
+            }
+        }
 
         private void EndGame(string message = "")
         {
+            DetermineWinner();
             gameInProgress = false;
             btnDeal.Enabled = false;
             btnClearTable.Enabled = true;
-            MessageBox.Show(message, "Game Over");
+            lblGameOver.Text = "Game Over, " + GameOver;
+            lblGameOver.Location = new Point(this.Width / 2 - lblGameOver.Width / 2, 354);
+            lblGameOver.Visible = true;
         }
 
-        private void HandValue(ListBox handList, Label totalLabel)
+        private void HandValue()
         {
-            int total = GetHandTotal(handList);
-            totalLabel.Text = "Total: " + total;
+            int total = GetHandTotal(lstPlayerHand);
+            lblPlayerTotal.Text = PlayerName + " Total: " + total;
+        }
+        private void DealerHandValue()
+        {
+            int total = GetHandTotal(lstDealerHand);
+            lblDealerTotal.Text = "Dealer Total: " + total;
         }
 
         private int GetHandTotal(ListBox handList)
