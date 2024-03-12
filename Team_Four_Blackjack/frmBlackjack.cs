@@ -72,6 +72,8 @@ namespace Team_Four_Blackjack
                     txtPlayerName.TextChanged -= txtPlayerName_TextChanged;
                     btnDeal.Enabled = true;
             }
+            lblPlayerTotal.Text = PlayerName + "'s total: ";
+            lblPlayerWL.Text = PlayerName + "'s wins: 0";
         }
 
         private void btnDeal_Click(object sender, EventArgs e)
@@ -214,8 +216,8 @@ namespace Team_Four_Blackjack
 
         private void EndGame(string message = "")
         {
-            WinLoss(GameOver, PlayerName);
             DetermineWinner();
+            WinLoss(GameOver, PlayerName);
             gameInProgress = false;
             btnDeal.Enabled = false;
             btnClearTable.Enabled = true;
@@ -227,12 +229,12 @@ namespace Team_Four_Blackjack
         private void HandValue()
         {
             int total = GetHandTotal(lstPlayerHand);
-            lblPlayerTotal.Text = PlayerName + " Total: " + total;
+            lblPlayerTotal.Text = PlayerName + "'s total: " + total;
         }
         private void DealerHandValue()
         {
             int total = GetHandTotal(lstDealerHand);
-            lblDealerTotal.Text = "Dealer Total: " + total;
+            lblDealerTotal.Text = "Dealer total: " + total;
         }
 
         private int GetHandTotal(ListBox handList)
