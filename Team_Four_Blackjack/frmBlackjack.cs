@@ -15,7 +15,6 @@ namespace Team_Four_Blackjack
 {
     public partial class frmBlackjack : Form
     {
-        string playerName = "Player";
         bool gameInProgress = false;
         Random shuffle = new Random(DateTime.Now.Millisecond);
         PictureBox[] PlayerHand = new PictureBox[9];
@@ -24,6 +23,8 @@ namespace Team_Four_Blackjack
         string PlayerName;
         int PlayerTotal;
         int DealerTotal;
+        int DealerScore;
+        int PlayerScore;
 
 
         public frmBlackjack()
@@ -116,6 +117,7 @@ namespace Team_Four_Blackjack
             btnDeal.Enabled = true;
             btnClearTable.Enabled = false;
             lblGameOver.Visible = false;
+            lblStatusMessage.Visible = false;
             UpdateDisplayedCards();
         }
 
@@ -162,8 +164,8 @@ namespace Team_Four_Blackjack
                 if (GetHandTotal(lstPlayerHand) > 21)
                 {
                     UpdateDisplayedCards();
-                    lblStatusMessage.Text = "Bust! Player total exceeds 21.";
-                    lblStatusMessage.Location = new Point(this.Width / 2 - lblStatusMessage.Width / 2, 350);
+                    lblStatusMessage.Text = "Bust! " + PlayerName + "'s total exceeds 21.";
+                    lblStatusMessage.Location = new Point(this.Width / 2 - lblStatusMessage.Width / 2, 330);
                     lblStatusMessage.Visible = true;
                     EndGame("Dealer wins!");
                 }
@@ -212,6 +214,7 @@ namespace Team_Four_Blackjack
 
         private void EndGame(string message = "")
         {
+            WinLoss(GameOver, PlayerName);
             DetermineWinner();
             gameInProgress = false;
             btnDeal.Enabled = false;
@@ -395,6 +398,26 @@ namespace Team_Four_Blackjack
                 else //king
                     return Properties.Resources.king_of_spades2;
             }
+        }
+
+        private void WinLoss(string gameover, string playername)
+        {
+            if(gameover == "Dealer wins!")
+            {
+                DealerScore++;
+                lblDealerWL.Text = "Dealer wins: " + DealerScore;
+            }
+            else if (gameover == playername + " wins!")
+            {
+                PlayerScore++;
+                lblPlayerWL.Text = playername + " wins: " + PlayerScore;
+            }
+            else if (gameover == "It's a tie!")
+            {
+                return;
+            }
+
+
         }
     }
 }
