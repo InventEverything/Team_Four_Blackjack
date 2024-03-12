@@ -10,113 +10,257 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Team_Four_Blackjack
 {
     public partial class frmBlackjack : Form
     {
-        bool DealtHandToggle = true;
-        Random Shuffle = new Random(DateTime.Now.Millisecond);
-        int DealtCard;
-        int CardValue;
-        bool gameinprogress = false;
+        string playerName = "Player";
+        bool gameInProgress = false;
+        Random shuffle = new Random(DateTime.Now.Millisecond);
         PictureBox[] PlayerHand = new PictureBox[9];
         PictureBox[] DealerHand = new PictureBox[8];
+        string GameOver;
+        string PlayerName;
+        int PlayerTotal;
+        int DealerTotal;
+
 
         public frmBlackjack()
         {
             InitializeComponent();
+
+            txtPlayerName.Visible = false;
+            btnPlayerName.Enabled = false;
+
             PlayerHand = new PictureBox[] { picPlayerCard1, picPlayerCard2, picPlayerCard3, picPlayerCard4, picPlayerCard5, picPlayerCard6, picPlayerCard7, picPlayerCard8, picPlayerCard9 };
             DealerHand = new PictureBox[] { picDealerCard1, picDealerCard2, picDealerCard3, picDealerCard4, picDealerCard5, picDealerCard6, picDealerCard7, picDealerCard8 };
         }
 
+        private void btnSubmitName_Click(object sender, EventArgs e)
+        {
+            btnSubmitName.Visible = false;
+
+            txtPlayerName.Visible = true;
+            btnPlayerName.Visible = true;
+
+            btnPlayerName.Enabled = false;
+
+            txtPlayerName.TextChanged += txtPlayerName_TextChanged;
+        }
+
+        private void txtPlayerName_TextChanged(object sender, EventArgs e)
+        {
+            btnPlayerName.Enabled = txtPlayerName.Text.Trim().Length >= 2;
+        }
+
+        private void btnPlayerName_Click(object sender, EventArgs e)
+        {
+            if (btnPlayerName.Enabled)
+            {
+                    PlayerName = txtPlayerName.Text.Trim();
+
+                    lblPlayerName.Text = $"Player: {PlayerName}";
+
+                    txtPlayerName.Visible = false;
+                    btnPlayerName.Visible = false;
+                    //Center the player name independent of name length
+                    lblPlayerName.Location = new Point(this.Size.Width/2-lblPlayerName.Width/2, 433);
+                    lblPlayerName.Visible = true;
+
+                    txtPlayerName.TextChanged -= txtPlayerName_TextChanged;
+                    btnDeal.Enabled = true;
+            }
+        }
+
         private void btnDeal_Click(object sender, EventArgs e)
+        {
+            if (!gameInProgress)
+            {
+                DealInitialCards();
+                gameInProgress = true;
+                btnDeal.Enabled = false;
+                btnClearTable.Enabled = false;
+                lblGameOver.Visible = false;
+                UpdateDisplayedCards();
+                DetermineWinner();
+                if(DealerTotal==21)
+                    EndGame();
+            }
+        }
+
+        private void DealInitialCards()
         {
             for (int i = 0; i < 2; i++)
             {
-                DealtCard = Shuffle.Next(0, lstDeck.Items.Count);
-                lstPlayerHand.Items.Add(lstDeck.Items[DealtCard]);
-                lstDeck.Items.Remove(lstDeck.Items[DealtCard]);
-                DealtCard = Shuffle.Next(0, lstDeck.Items.Count);
-                lstDealerHand.Items.Add(lstDeck.Items[DealtCard]);
-                lstDeck.Items.Remove(lstDeck.Items[DealtCard]);
-                
+                DealCard(lstPlayerHand);
+                DealCard(lstDealerHand);
             }
-            DealerValue(sender, e);
-            HandValue(sender, e);
-            gameinprogress = true;
-            btnDeal.Enabled = false;
-            UpdateDisplayedCards(sender, e);
+            HandValue();
+            DealerHandValue();
         }
 
-        private void Clear_Table_Click(object sender, EventArgs e)
+        private void DealCard(ListBox hand)
         {
-            for (int i = 0; i < lstDealerHand.Items.Count; i++)
-            {
-                lstDeck.Items.Add(lstDealerHand.Items[i]);
-            }
-            for (int i = 0; i < lstPlayerHand.Items.Count; i++)
-            {
-                lstDeck.Items.Add(lstPlayerHand.Items[i]);
-            }
-            lstPlayerHand.Items.Clear();
-            lstDealerHand.Items.Clear();
+            int dealtCardIndex = shuffle.Next(0, lstDeck.Items.Count);
+            hand.Items.Add(lstDeck.Items[dealtCardIndex]);
+            lstDeck.Items.RemoveAt(dealtCardIndex);
+        }
+
+        private void ClearTable_Click(object sender, EventArgs e)
+        {
+            ClearHand(lstDealerHand);
+            ClearHand(lstPlayerHand);
+            HandValue();
+            DealerHandValue();
             btnDeal.Enabled = true;
             btnClearTable.Enabled = false;
-            UpdateDisplayedCards(sender, e);
+            lblGameOver.Visible = false;
+            UpdateDisplayedCards();
         }
-        private void UpdateDisplayedCards(object sender, EventArgs e)
+
+        private void ClearHand(ListBox hand)
         {
-            for (int i = 0; i < lstPlayerHand.Items.Count; i++)
+            lstDeck.Items.AddRange(hand.Items);
+            hand.Items.Clear();
+        }
+
+        private void UpdateDisplayedCards()
+        {
+            UpdateHandDisplay(lstPlayerHand, PlayerHand);
+            UpdateHandDisplay(lstDealerHand, DealerHand);
+        }
+
+        private void UpdateHandDisplay(ListBox handList, PictureBox[] handPictureBoxes)
+        {
+            for (int i = 0; i < handList.Items.Count; i++)
             {
-                lstPlayerHand.SelectedIndex = i;
-                int FaceCardCheck = lstPlayerHand.SelectedItem.ToString().Length;
-                string value = lstPlayerHand.SelectedItem.ToString().Substring(0, 2);
-                string suit = lstPlayerHand.SelectedItem.ToString().Substring(2, 1);
-                if (FaceCardCheck == 4)
-                {
-                    string face = lstPlayerHand.SelectedItem.ToString().Substring(3, 1);
-                    PlayerHand[i].Image = CardImageGetter(value, suit, face);
-                    PlayerHand[i].Visible = true;
-                    PlayerHand[i].BringToFront();
-                }
+                handList.SelectedIndex = i;
+                string card = handList.SelectedItem.ToString();
+                if (card.Length == 4)
+                    handPictureBoxes[i].Image = CardImageGetter(card.Substring(0, 2), card.Substring(2, 1), card.Substring(3, 1));
                 else
-                {
-                    PlayerHand[i].Image = CardImageGetter(value, suit);
-                    PlayerHand[i].Visible = true;
-                    PlayerHand[i].BringToFront();
-                }
+                    handPictureBoxes[i].Image = CardImageGetter(card.Substring(0, 2), card.Substring(2, 1));
+                handPictureBoxes[i].Visible = true;
+                handPictureBoxes[i].BringToFront();
             }
-            for (int i = lstPlayerHand.Items.Count; i < 9; i++)
+
+            for (int i = handList.Items.Count; i < handPictureBoxes.Length; i++)
             {
-                PlayerHand[i].Image = null;
-                PlayerHand[i].Visible = false;
-            }
-            for (int i = 0; i < lstDealerHand.Items.Count; i++)
-            {
-                lstDealerHand.SelectedIndex = i;
-                int FaceCardCheck = lstDealerHand.SelectedItem.ToString().Length;
-                string value = lstDealerHand.SelectedItem.ToString().Substring (0, 2);
-                string suit = lstDealerHand.SelectedItem.ToString ().Substring (2, 1);
-                if (FaceCardCheck == 4)
-                {
-                    string face = lstDealerHand.SelectedItem.ToString().Substring(3, 1);
-                    DealerHand[i].Image = CardImageGetter (value, suit, face);
-                    DealerHand[i].Visible = true;
-                    DealerHand[i].BringToFront();
-                }
-                else
-                {
-                    DealerHand[i].Image = CardImageGetter(value, suit);
-                    DealerHand[i].Visible = true;
-                    DealerHand[i].BringToFront();
-                }
-            }
-            for (int i = lstDealerHand.Items.Count; i < 8; i++)
-            {
-                DealerHand[i].Image = null;
-                DealerHand[i].Visible = false;
+                handPictureBoxes[i].Image = null;
+                handPictureBoxes[i].Visible = false;
             }
         }
+
+        private void btnHit_Click(object sender, EventArgs e)
+        {
+            if (gameInProgress)
+            {
+                DealCard(lstPlayerHand);
+                HandValue();
+
+                if (GetHandTotal(lstPlayerHand) > 21)
+                {
+                    UpdateDisplayedCards();
+                    lblStatusMessage.Text = "Bust! Player total exceeds 21.";
+                    lblStatusMessage.Location = new Point(this.Width / 2 - lblStatusMessage.Width / 2, 350);
+                    lblStatusMessage.Visible = true;
+                    EndGame("Dealer wins!");
+                }
+                else
+                {
+                    UpdateDisplayedCards();
+                }
+            }
+        }
+
+        private void btnStand_Click(object sender, EventArgs e)
+        {
+            if (gameInProgress)
+            {
+                while (GetHandTotal(lstDealerHand) < 17)
+                {
+                    DealCard(lstDealerHand);
+                    UpdateDisplayedCards();
+                    System.Threading.Thread.Sleep(500);
+                }
+
+                DealerHandValue();
+                UpdateDisplayedCards();
+                EndGame();
+            }
+        }
+
+        private void DetermineWinner()
+        {
+            PlayerTotal = GetHandTotal(lstPlayerHand);
+            DealerTotal = GetHandTotal(lstDealerHand);
+
+            if (PlayerTotal > 21 || (DealerTotal <= 21 && DealerTotal > PlayerTotal))
+            {
+                 GameOver = "Dealer wins!";
+            }
+            else if (DealerTotal > 21 || PlayerTotal > DealerTotal)
+            {
+                 GameOver = PlayerName + " wins!";
+            }
+            else
+            {
+                 GameOver = "It's a tie!";
+            }
+        }
+
+        private void EndGame(string message = "")
+        {
+            DetermineWinner();
+            gameInProgress = false;
+            btnDeal.Enabled = false;
+            btnClearTable.Enabled = true;
+            lblGameOver.Text = "Game Over, " + GameOver;
+            lblGameOver.Location = new Point(this.Width / 2 - lblGameOver.Width / 2, 354);
+            lblGameOver.Visible = true;
+        }
+
+        private void HandValue()
+        {
+            int total = GetHandTotal(lstPlayerHand);
+            lblPlayerTotal.Text = PlayerName + " Total: " + total;
+        }
+        private void DealerHandValue()
+        {
+            int total = GetHandTotal(lstDealerHand);
+            lblDealerTotal.Text = "Dealer Total: " + total;
+        }
+
+        private int GetHandTotal(ListBox handList)
+        {
+            int total = 0;
+            int numberOfAces = 0;
+
+            for (int i = 0; i < handList.Items.Count; i++)
+            {
+                handList.SelectedIndex = i;
+                int cardValue = int.Parse(handList.SelectedItem.ToString().Substring(0,2));
+
+                // Ace always plays as 11
+                if (cardValue == 11)
+                {
+                    numberOfAces++;
+                }
+
+                total += cardValue;
+            }
+
+            // Adjust the value of Aces if the total exceeds 21
+            while (total > 21 && numberOfAces > 0)
+            {
+                total -= 10; // Convert an Ace from 11 to 1
+                numberOfAces--;
+            }
+
+            return total;
+        }
+
         private Image CardImageGetter(string value, string suit)
         {
             if (suit == "♥")
@@ -212,6 +356,7 @@ namespace Team_Four_Blackjack
                     return Properties.Resources.ace_of_spades;
             }
         }
+
         private Image CardImageGetter(string value, string suit, string face)
         {
             if (suit == "♥")
@@ -250,55 +395,6 @@ namespace Team_Four_Blackjack
                 else //king
                     return Properties.Resources.king_of_spades2;
             }
-        }
-
-        private void btnHit_Click(object sender, EventArgs e)
-        {
-           if(gameinprogress == true)
-            {
-                DealtCard = Shuffle.Next(0, lstDeck.Items.Count);
-                lstPlayerHand.Items.Add(lstDeck.Items[DealtCard]);
-                lstDeck.Items.Remove(lstDeck.Items[DealtCard]);
-                DealerValue(sender, e);
-                HandValue(sender, e);
-                //requires victory check 
-                //requires card animation update
-
-            }
-
-        }
-
-        private void btnStand_Click(object sender, EventArgs e)
-        {
-            gameinprogress = false;
-            {
-                
-            }
-            //requires dealer auto-play
-        }
-        private void HandValue(object sender, EventArgs e)
-        {
-            for (int i = 0; i < lstPlayerHand.Items.Count; i++)
-            {
-               lstPlayerHand.SelectedIndex = i;
-               CardValue += int.Parse(lstPlayerHand.SelectedItem.ToString().Substring(0, 2));
-            }
-            lblPlayerTotal.Text = "Player Total: " + CardValue;
-            CardValue = 0;
-            
-
-        }
-        private void DealerValue(object sender, EventArgs e)
-        {
-            for (int i = 0; i < lstDealerHand.Items.Count; i++)
-            {
-                lstDealerHand.SelectedIndex = i;
-                CardValue += int.Parse(lstDealerHand.SelectedItem.ToString().Substring(0, 2));
-            }
-            lblDealerTotal.Text = "Dealer Total: " + CardValue;
-            CardValue = 0;
-
-
         }
     }
 }
